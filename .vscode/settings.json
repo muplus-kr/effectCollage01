@@ -1,0 +1,24 @@
+{
+    "liveSassCompile.settings.formats":[
+        // This is Default.
+        {
+            //압축관련 포맷
+            "format": "expanded",
+            //output 파일
+            "extensionName": ".css",
+            //css가 저장될 폴더명
+            "savePath": "~/../../css"
+        }
+    ],
+
+    //.map 파일 true / false
+    "liveSassCompile.settings.generateMap": false,
+    // 특정 .scss file 컴파일
+    //"liveSassCompile.settings.includeItems": ["../resource/scss/ui.commonA.scss"],
+
+    // 크로스브라우징
+    // "liveSassCompile.settings.autoprefix": [ "> 1%", "last 2 versions" ],
+
+    // 모든 .scss 파일
+    // "liveSassCompile.settings.includeItems":[ "*.scss" ]
+}
