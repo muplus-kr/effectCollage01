@@ -14,8 +14,8 @@ $(document).ready(function () {
     }
     randomTxt();
 
-    // card
-    function card() {
+    // card-1
+    function cardFunc() {
         var windowWidth, windowHeight;
 
         var _cards = document.querySelectorAll(".cardItem");
@@ -54,11 +54,34 @@ $(document).ready(function () {
         resize();
     }
 
+    // card-2
+    function scaleFunc() {
+        TweenMax.to(document.querySelector(".section3 .inner"), 2.5, {
+            scale: 1,
+            y: 0,
+            delay: 1,
+            ease: Power3.easeInOut,
+        });
+    }
+
+    // scroll event
     window.addEventListener("scroll", function (e) {
         var scroll = this.scrollY;
+        var section2 = document.querySelector(".section2");
+        var section3 = document.querySelector(".section3");
 
-        if (scroll > document.querySelector(".section2").offsetTop - window.innerHeight / 1.5) {
-            card();
+        if (scroll > section2.offsetTop - window.innerHeight / 1.5 && scroll < section2.offsetTop - window.innerHeight / 1.5 + section2.offsetHeight) {
+            cardFunc();
+        } else if (scroll > section3.offsetTop - window.innerHeight / 1.5 && scroll < section3.offsetTop - window.innerHeight / 1.5 + section3.offsetHeight) {
+            scaleFunc();
         }
     });
+
+    // TweenMax.to(window, 1, {
+    //     scrollTo: {
+    //         y: document.querySelector(".section2"),
+    //     },
+    //     delay: 1.7,
+    //     ease: Power3.easeInOut,
+    // });
 });
