@@ -1,4 +1,4 @@
-$(document).ready(function () {
+window.onload = function () {
     // random text
     function randomTxt() {
         var text = document.querySelectorAll(".random span");
@@ -137,4 +137,4 @@ $(document).ready(function () {
             }
         }
     });
-});
+};
