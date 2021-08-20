@@ -33,6 +33,7 @@ $(document).ready(function () {
             if (window.NodeList && !NodeList.prototype.forEach) {
                 NodeList.prototype.forEach = Array.prototype.forEach;
             }
+
             _cards.forEach(function (item, i) {
                 TweenMax.to(item, 1, {
                     autoAlpha: 1,
@@ -88,26 +89,51 @@ $(document).ready(function () {
         var scroll = this.scrollY || this.pageYOffset;
         var section = document.querySelectorAll(".section");
         for (var i = 0; i < section.length; i++) {
-            if (scroll > section[i].offsetTop - window.innerHeight / 1.5 && scroll < section[i].offsetTop - window.innerHeight / 1.5 + section[i].offsetHeight) {
+            if (scroll > section[i].offsetTop - window.innerHeight / 3 && scroll < section[i].offsetTop - window.innerHeight / 3 + section[i].offsetHeight) {
                 if (i == 1) {
                     cardFunc();
                 } else if (i == 2) {
                     scaleFunc();
-                } else if (i == 3) {
-                    // scrollToLast();
+                }
+            }
+            if (scroll > section[i].offsetTop && scroll < section[i].offsetTop + section[i].offsetHeight) {
+                if (i == 3 && !section[3].classList.contains("on")) {
+                    scrollToLast();
                 }
             }
         }
     });
 
     function scrollToLast() {
+        var text2 = document.querySelectorAll(".random2 span");
+        var section4 = document.querySelector(".section4");
+        var section5 = document.querySelector(".section5");
+
+        for (var i = 0; i < text2.length; i++) {
+            var idx = text2[i];
+
+            TweenMax.to(idx, 1, {
+                autoAlpha: 1,
+                delay: Math.random() * 0.7,
+                ease: Power3.easeInOut,
+            });
+        }
+
         TweenMax.to(window, 1, {
             scrollTo: {
-                y: document.querySelector(".section5"),
+                y: section5,
             },
             delay: 1.7,
             ease: Power3.easeInOut,
-            autoKill: true,
         });
+
+        TweenMax.to(document.querySelector(".section5 .inner"), 2.5, {
+            scale: 1,
+            y: 0,
+            delay: 1.5,
+            ease: Power3.easeInOut,
+        });
+        // 한번만 실행되게 on 클래스 부여
+        section4.classList.add("on");
     }
 });
