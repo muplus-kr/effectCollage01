@@ -23,12 +23,16 @@ $(document).ready(function () {
         var inner = document.querySelector(".section2 inner");
 
         TweenMax.to(h2, 1, {
-            top: "30px",
+            y: "30px",
             autoAlpha: 1,
             ease: Power3.easeOut,
         });
 
         function cardSetting() {
+            // IE 에서 foreach 사용
+            if (window.NodeList && !NodeList.prototype.forEach) {
+                NodeList.prototype.forEach = Array.prototype.forEach;
+            }
             _cards.forEach(function (item, i) {
                 TweenMax.to(item, 1, {
                     autoAlpha: 1,
@@ -59,14 +63,14 @@ $(document).ready(function () {
         TweenMax.to(document.querySelector(".section3 .inner"), 2.5, {
             scale: 1,
             y: 0,
-            delay: 1,
+            // delay: 1,
             ease: Power3.easeInOut,
         });
     }
 
     // scroll event
     window.addEventListener("scroll", function (e) {
-        var scroll = this.scrollY;
+        var scroll = this.scrollY || this.pageYOffset;
         var section2 = document.querySelector(".section2");
         var section3 = document.querySelector(".section3");
 
