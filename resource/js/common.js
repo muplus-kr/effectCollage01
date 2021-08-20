@@ -69,23 +69,45 @@ $(document).ready(function () {
     }
 
     // scroll event
+    // window.addEventListener("scroll", function (e) {
+    //     var scroll = this.scrollY || this.pageYOffset;
+    //     var section2 = document.querySelector(".section2");
+    //     var section3 = document.querySelector(".section3");
+    //     var section4 = document.querySelector(".section4");
+
+    //     if (scroll > section2.offsetTop - window.innerHeight / 1.5 && scroll < section2.offsetTop - window.innerHeight / 1.5 + section2.offsetHeight) {
+    //         cardFunc();
+    //     } else if (scroll > section3.offsetTop - window.innerHeight / 1.5 && scroll < section3.offsetTop - window.innerHeight / 1.5 + section3.offsetHeight) {
+    //         scaleFunc();
+    //     } else if (scroll > section4.offsetTop - window.innerHeight / 1.5 && scroll < section4.offsetTop - window.innerHeight / 1.5 + section4.offsetHeight) {
+    //         scrollToLast();
+    //     }
+    // });
+
     window.addEventListener("scroll", function (e) {
         var scroll = this.scrollY || this.pageYOffset;
-        var section2 = document.querySelector(".section2");
-        var section3 = document.querySelector(".section3");
-
-        if (scroll > section2.offsetTop - window.innerHeight / 1.5 && scroll < section2.offsetTop - window.innerHeight / 1.5 + section2.offsetHeight) {
-            cardFunc();
-        } else if (scroll > section3.offsetTop - window.innerHeight / 1.5 && scroll < section3.offsetTop - window.innerHeight / 1.5 + section3.offsetHeight) {
-            scaleFunc();
+        var section = document.querySelectorAll(".section");
+        for (var i = 0; i < section.length; i++) {
+            if (scroll > section[i].offsetTop - window.innerHeight / 1.5 && scroll < section[i].offsetTop - window.innerHeight / 1.5 + section[i].offsetHeight) {
+                if (i == 1) {
+                    cardFunc();
+                } else if (i == 2) {
+                    scaleFunc();
+                } else if (i == 3) {
+                    // scrollToLast();
+                }
+            }
         }
     });
 
-    // TweenMax.to(window, 1, {
-    //     scrollTo: {
-    //         y: document.querySelector(".section2"),
-    //     },
-    //     delay: 1.7,
-    //     ease: Power3.easeInOut,
-    // });
+    function scrollToLast() {
+        TweenMax.to(window, 1, {
+            scrollTo: {
+                y: document.querySelector(".section5"),
+            },
+            delay: 1.7,
+            ease: Power3.easeInOut,
+            autoKill: true,
+        });
+    }
 });

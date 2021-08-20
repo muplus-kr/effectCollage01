@@ -23,6 +23,25 @@
 .section4 {
     background-color: darksalmon;
 }
+.section5 {
+    background-color: cornsilk;
+}
+.section4 h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #222;
+    font-weight: 900;
+    opacity: 1;
+    padding-top: 30px;
+}
+.section5 h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #222;
+    font-weight: 900;
+    opacity: 1;
+    padding-top: 30px;
+}
 
 /* random text */
 .section1 .inner {
