@@ -69,6 +69,40 @@ $(document).ready(function () {
         });
     }
 
+    // tslideToLastSection
+    function scrollToLast() {
+        var text2 = document.querySelectorAll(".random2 span");
+        var section4 = document.querySelector(".section4");
+        var section5 = document.querySelector(".section5");
+
+        for (var i = 0; i < text2.length; i++) {
+            var idx = text2[i];
+
+            TweenMax.to(idx, 1, {
+                autoAlpha: 1,
+                delay: Math.random() * 0.7,
+                ease: Power3.easeInOut,
+            });
+        }
+
+        TweenMax.to(window, 1, {
+            scrollTo: {
+                y: section5,
+            },
+            delay: 2,
+            ease: Power3.easeInOut,
+        });
+
+        TweenMax.to(document.querySelector(".section5 .inner"), 2, {
+            scale: 1,
+            y: 0,
+            delay: 2.5,
+            ease: Power3.easeInOut,
+        });
+        // 한번만 실행되게 on 클래스 부여
+        section4.classList.add("on");
+    }
+
     // scroll event
     // window.addEventListener("scroll", function (e) {
     //     var scroll = this.scrollY || this.pageYOffset;
@@ -103,37 +137,4 @@ $(document).ready(function () {
             }
         }
     });
-
-    function scrollToLast() {
-        var text2 = document.querySelectorAll(".random2 span");
-        var section4 = document.querySelector(".section4");
-        var section5 = document.querySelector(".section5");
-
-        for (var i = 0; i < text2.length; i++) {
-            var idx = text2[i];
-
-            TweenMax.to(idx, 1, {
-                autoAlpha: 1,
-                delay: Math.random() * 0.7,
-                ease: Power3.easeInOut,
-            });
-        }
-
-        TweenMax.to(window, 1, {
-            scrollTo: {
-                y: section5,
-            },
-            delay: 1.7,
-            ease: Power3.easeInOut,
-        });
-
-        TweenMax.to(document.querySelector(".section5 .inner"), 2.5, {
-            scale: 1,
-            y: 0,
-            delay: 1.5,
-            ease: Power3.easeInOut,
-        });
-        // 한번만 실행되게 on 클래스 부여
-        section4.classList.add("on");
-    }
 });
